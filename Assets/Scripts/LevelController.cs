@@ -3,33 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelController : MonoBehaviour
-{
+public class LevelController : MonoBehaviour {
   [SerializeField] string _nextLevelName;
   private Monster[] _monsters;
 
-  void OnEnable()
-  {
+  void OnEnable() {
     _monsters = FindObjectsOfType<Monster>();
   }
 
   // Start is called before the first frame update
-  void Start()
-  {
+  void Start() {
 
   }
 
   // Update is called once per frame
-  void Update()
-  {
+  void Update() {
     if (MonstersAreAllDead())
       GoToNextLevel();
   }
 
-  bool MonstersAreAllDead()
-  {
-    foreach (var monster in _monsters)
-    {
+  bool MonstersAreAllDead() {
+    foreach (var monster in _monsters) {
       if (monster.gameObject.activeSelf)
         return false;
     }
@@ -37,8 +31,7 @@ public class LevelController : MonoBehaviour
     return true;
   }
 
-  void GoToNextLevel()
-  {
+  void GoToNextLevel() {
     Debug.Log("Go to level " + _nextLevelName);
     SceneManager.LoadScene(_nextLevelName);
   }
